@@ -1,0 +1,125 @@
+\documentclass[pdf,oneside]{oucthesis}
+\setmainfont{TeX Gyre Termes}  %设置英文Times New Roman
+\setmathfont{TeX Gyre Termes Math} %设置英文数学Times New Roman
+% pdf: 便于阅读的电子版，去除掉多余的空白页，加入超链接等
+% print：打印版本，添加空白页，便于双面打印，禁用超链接
+
+
+
+% ========================================
+%｜             论文信息填写               ｜
+% ========================================
+\title{北大西洋亚极地区域多尺度海洋过程能量交换}
+
+
+% ========================================
+%                包引用                 
+% ========================================
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{setspace}
+\usepackage{amsthm}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{caption}
+\captionsetup{font={small}}
+\usepackage{csquotes}
+\usepackage{adjustbox}
+\usepackage{longtable} % 引入 longtable 包，用于跨页表格
+ \usepackage{array} 
+ 
+% 内容区域
+\begin{document}
+
+% 封面
+\include{data/cover}
+% 学位论文答辩委员会
+\include{data/committee.tex}
+% 独创性声明
+\include{data/statement.tex}
+
+% 从摘要开始，设置行距为20磅
+\setlength{\baselineskip}{20pt}
+
+% 中文摘要
+\phantomsection\addengcontent{chapter}{Abstract (in Chinese) }
+\include{data/abstract_ch.tex}
+% 英文摘要
+\phantomsection\addengcontent{chapter}{Abstract (in English) }
+\include{data/abstract_en.tex}
+
+
+% 目录
+\tableofcontents % 中文目录
+\tableofengcontents % 英文目录
+
+
+% 图表目录
+\newcommand{\loflabel}{图} 
+\renewcommand{\numberline}[1]{\loflabel~#1\hspace*{1em}}
+\renewcommand{\listfigurename}{插~~图~~清~~单} 
+\begin{center}
+\clearpage
+\phantomsection\addcontentsline{toc}{chapter}{插\hspace{6pt}图\hspace{6pt}清\hspace{6pt}单}
+\phantomsection\addengcontent{chapter}{Figure list}
+{\listoffigures}
+\end{center}
+
+
+\newcommand{\lotlabel}{表}
+\renewcommand{\numberline}[1]{\lotlabel~#1\hspace*{1em}}
+\renewcommand{\listtablename}{表~~格~~清~~单} 
+\begin{center}
+\clearpage
+\phantomsection\addcontentsline{toc}{chapter}{表\hspace{6pt}格\hspace{6pt}清\hspace{6pt}单}
+\phantomsection\addengcontent{chapter}{Table list}
+{\listoftables}
+\end{center}
+\clearpage
+
+% 中文注释表
+\phantomsection\addengcontent{chapter}{Abbreviation}
+\include{data/abbreviation.tex}
+
+% \renewcommand{\numberline}[1]{\lotlabel~#1\hspace*{1em}}
+% \renewcommand{\listtablename}{注~~释~~表} 
+% \begin{center}
+% \clearpage
+% \phantomsection\addcontentsline{toc}{chapter}{注\hspace{16pt}释\hspace{16pt}表}
+% \phantomsection\addengcontent{chapter}{Abbreviation}
+% {\listoftables}
+% \end{center}
+
+
+
+% 正文
+\mainmatter
+\pagenumbering{arabic}
+
+
+\include{contents/section_01}
+\include{contents/section_02}
+\include{contents/section_03}
+\include{contents/section_04}
+\include{contents/section_05}
+\include{contents/section_06}
+
+% 参考文献
+\phantomsection\addengcontent{chapter}{References}
+\bibliographystyle{oucauthoryear}
+\bibliography{cite}
+
+% 学术成果
+\phantomsection\addengcontent{chapter}{Published papers and research results while pursuing the degree}
+\include{data/achievement.tex}
+
+% 致谢
+\phantomsection\addengcontent{chapter}{Acknowledgements}
+\include{data/acknowledgement.tex}
+
+% 作者简介
+\phantomsection\addengcontent{chapter}{Resume}
+\include{data/profile.tex}
+
+\end{document}
